@@ -1,0 +1,26 @@
+{
+    "data": [
+        {
+            "_id": "123456",
+            "customerId": "789",
+            "roomId": "1",
+            "room": {
+                "_id": "1",
+                "images": "/path/to/image.jpg",
+                "roomName": "Conference Room A",
+                "is_active_status": true,
+                "floor": "5th floor",
+                "type_room": "Conference",
+                "description": "A spacious conference room with modern amenities",
+                "is_active_booked": false
+            },
+            "roomName": "Conference Room A",
+            "meetingDate": "2024-02-12",
+            "meetingTime": "09:00 AM",
+            "startTime": "09:30 AM",
+            "endTime": "11:30 AM",
+            "equipments": "TV",
+            "status_booking_done": true
+        }
+    ]
+}

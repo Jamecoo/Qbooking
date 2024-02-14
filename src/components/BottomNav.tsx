@@ -1,37 +1,48 @@
 import * as React from 'react';
+import { Box } from '@mui/material';
+import { useLocation, useNavigate } from 'react-router-dom';
 import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
-import HomeIcon from '@mui/icons-material/Home';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import BookmarkIcon from '@mui/icons-material/Bookmark';
-import NotificationsIcon from '@mui/icons-material/Notifications';
-import PersonIcon from '@mui/icons-material/Person';
-import { Box } from '@mui/material';
-import { useLocation, useNavigate } from 'react-router-dom'; // Import useNavigate
+
+//Icons
+import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
+import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
+import BookmarkBorderOutlinedIcon from '@mui/icons-material/BookmarkBorderOutlined';
+import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNoneOutlined';
+import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
+
+
 
 const BottomNav = () => {
+
+    
+
     const [value, setValue] = React.useState('Home');
     const navigate = useNavigate(); // Initialize useNavigate
     const location = useLocation();
 
-    const shouldShowBottomNav = !(location.pathname === "/" || location.pathname === "/create" 
-    || location.pathname === "/forgotPassword" || location.pathname === "/submit" || location.pathname === "/otpages" );
+    //functions
+
+    
+
+    const shouldShowBottomNav = !(location.pathname === "/" || location.pathname === "/register" 
+    || location.pathname === "/forgotPassword" || location.pathname === "/submit" || location.pathname === "/otpages");
 
 
     const handleChange = (_event: React.SyntheticEvent, newValue: string) => {
         setValue(newValue);
 
         // Use navigate to redirect to the desired path
-        if (newValue === 'Home') {
-            navigate('/Home');
+        if (newValue === 'home') {
+            navigate('/home');
         } else if (newValue === 'favorites') {
-            navigate('/Favorites');
-        } else if (newValue === 'Bookings') {
-            navigate('/Bookings');
-        } else if (newValue === 'Notifications') {
-            navigate('/Notifications');
-        } else if (newValue === 'Profile') {
-            navigate('/Profile');
+            navigate('/favorites');
+        } else if (newValue === 'booking') {
+            navigate('/booking');
+        } else if (newValue === 'notifications') {
+            navigate('/notifications');
+        } else if (newValue === 'profile') {
+            navigate('/profile');
         }
     };
 
@@ -40,28 +51,28 @@ const BottomNav = () => {
             <BottomNavigation showLabels value={value} onChange={handleChange}>
                 <BottomNavigationAction
                     label="Home"
-                    value="Home"
-                    icon={<HomeIcon />}
+                    value="home"
+                    icon={<HomeOutlinedIcon />}
                 />
                 <BottomNavigationAction
                     label="Favorites"
                     value="favorites"
-                    icon={<FavoriteIcon />}
+                    icon={<FavoriteBorderOutlinedIcon />}
                 />
                 <BottomNavigationAction
                     label="Bookings"
-                    value="Bookings"
-                    icon={<BookmarkIcon />}
+                    value="booking"
+                    icon={<BookmarkBorderOutlinedIcon />}
                 />
                 <BottomNavigationAction
                     label="Notifications"
-                    value="Notifications"
-                    icon={<NotificationsIcon />}
+                    value="notifications"
+                    icon={<NotificationsNoneOutlinedIcon />}
                 />
                 <BottomNavigationAction
                     label="Profile"
-                    value="Profile"
-                    icon={<PersonIcon />}
+                    value="profile"
+                    icon={<PersonOutlineOutlinedIcon />}
                 />
             </BottomNavigation>
         </Box>

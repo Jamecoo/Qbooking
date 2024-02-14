@@ -10,17 +10,24 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import { useState } from 'react';
 import IconButton from '@mui/material/IconButton';
 import StarOutlineIcon from '@mui/icons-material/StarOutline';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 
 
 const Available = () => {
 
+    const navigate = useNavigate();
+    const [isFavorite1, setIsFavorite1] = useState<boolean>(false); // State for Box 1 favorite status
+    const [isFavorite2, setIsFavorite2] = useState<boolean>(false);
 
-    const [isFavorite, setIsFavorite] = useState(false);
 
-    const handleFavoriteClick = () => {
-        setIsFavorite(!isFavorite);
+    //functions
+    const handleFavoriteClick1 = () => {
+        setIsFavorite1(prevFavorite => !prevFavorite); // Toggle the favorite status for Box 1
+    };
+
+    const handleFavoriteClick2 = () => {
+        setIsFavorite2(prevFavorite => !prevFavorite); // Toggle the favorite status for Box 2
     };
 
     const [selectedLink, setSelectedLink] = useState<string>('');
@@ -29,16 +36,24 @@ const Available = () => {
         setSelectedLink(link);
     };
 
+    const handleButtonClick = () => {
+
+        navigate('/filter');
+    };
+
 
     return <Box sx={{ display: 'flex', minHeight: '100vh', justifyContent: 'center' }}>
         <Box sx={{ maxWidth: 400, padding: 3, width: '430px', backgroundColor: '#E8E8E8' }}>
             <Box sx={{ display: 'flex', justifyContent: 'center' }}>
                 <TextField
-                    sx={{ backgroundColor: 'white', width: '100%' }}
+                    sx={{ width: '100%' }}
                     type='text'
                     placeholder='Where are you going?...'
                     fullWidth
                     InputProps={{
+                        style: {
+                            borderRadius: '30px', backgroundColor: 'white'
+                        },
                         startAdornment: (
                             <InputAdornment position="start">
                                 <SearchOutlinedIcon />
@@ -46,8 +61,9 @@ const Available = () => {
                         ),
                         endAdornment: (
                             <InputAdornment position="end">
-                                <Button variant="contained" sx={{ backgroundColor: '#282828', color: 'white', borderRadius: '20px', fontSize: '12px' }}>
-                                    Filter<AccessTimeIcon sx={{ fontSize: 'medium' }} />
+                                <Button variant="contained" onClick={handleButtonClick} sx={{ backgroundColor: '#282828', color: 'white', borderRadius: '20px', fontSize: '12px', textTransform: 'none' }}>
+                                    Filter
+                                    <AccessTimeIcon sx={{ fontSize: 'medium' }} />
                                 </Button>
                             </InputAdornment>
                         ),
@@ -95,15 +111,15 @@ const Available = () => {
             <Box sx={{ marginTop: '20px', position: 'relative' }}>
                 <Box height={261} sx={{ position: 'relative' }}>
                     <img style={{ objectFit: 'cover', width: '100%', height: '100%', borderRadius: '20px 20px 0 0' }} src={Room1} alt="" />
-                    <IconButton onClick={handleFavoriteClick} sx={{
+                    <IconButton onClick={handleFavoriteClick1} sx={{
                         position: 'absolute',
                         top: '10px',
                         right: '10px',
-                        color: isFavorite ? 'red' : 'gray',
+                        color: isFavorite1 ? 'red' : 'gray',
                         borderRadius: '50%',
                         boxShadow: '0 2px 5px rgba(0, 0, 0, 0.1)',
                     }}>
-                        {isFavorite ? <FavoriteIcon /> : <FavoriteBorderIcon />}
+                        {isFavorite1 ? <FavoriteIcon /> : <FavoriteBorderIcon />}
                     </IconButton>
                 </Box>
 
@@ -112,7 +128,7 @@ const Available = () => {
                         <Typography sx={{ padding: '10px 20px', fontWeight: 600 }}>
                             iQURi Room
                         </Typography>
-                        <p style={{ fontSize: '10px', color: 'green', padding: '13px'}}>
+                        <p style={{ fontSize: '10px', color: 'green', padding: '13px' }}>
                             <CircleIcon sx={{ fontSize: '10px', verticalAlign: 'middle', marginRight: '10px' }} />
                             Available now
                         </p>
@@ -125,7 +141,10 @@ const Available = () => {
                             Floor 2
                         </p>
                         <p style={{ fontSize: '10px', fontStyle: 'normal', paddingLeft: '20px', marginTop: '2px', width: '250px' }}>This room is equipped with all the necessary equipment for lectures, meetings and negotiations.</p>
-                        <p style={{ fontSize: '12px', marginLeft: '320px', marginTop: '-40px' }}><StarOutlineIcon sx={{ fontSize: '15px' }} /> 4.96</p>
+
+                        <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                            <p style={{ fontSize: '12px', marginLeft: '300px', marginTop: '-40px', display: 'flex', alignItems: 'center' }}><StarOutlineIcon sx={{ fontSize: '20px', verticalAlign: 'middle' }} /> 4.96</p>
+                        </Box>
                     </Grid>
                 </Box>
             </Box>
@@ -133,15 +152,15 @@ const Available = () => {
             <Box sx={{ marginTop: '20px', position: 'relative' }}>
                 <Box height={261} sx={{ position: 'relative' }}>
                     <img style={{ objectFit: 'cover', width: '100%', height: '100%', borderRadius: '20px 20px 0 0' }} src={Room2} alt="" />
-                    <IconButton onClick={handleFavoriteClick} sx={{
+                    <IconButton onClick={handleFavoriteClick2} sx={{
                         position: 'absolute',
                         top: '10px',
                         right: '10px',
-                        color: isFavorite ? 'red' : 'gray',
+                        color: isFavorite2 ? 'red' : 'gray',
                         borderRadius: '50%',
                         boxShadow: '0 2px 5px rgba(0, 0, 0, 0.1)',
                     }}>
-                        {isFavorite ? <FavoriteIcon /> : <FavoriteBorderIcon />}
+                        {isFavorite2 ? <FavoriteIcon /> : <FavoriteBorderIcon />}
                     </IconButton>
                 </Box>
 
@@ -163,7 +182,10 @@ const Available = () => {
                             Floor 2
                         </p>
                         <p style={{ fontSize: '10px', fontStyle: 'normal', paddingLeft: '20px', marginTop: '2px', width: '250px' }}>This room is equipped with all the necessary equipment for lectures, meetings and negotiations.</p>
-                        <p style={{ fontSize: '12px', marginLeft: '320px', marginTop: '-40px' }}><StarOutlineIcon sx={{ fontSize: '15px' }} /> 4.96</p>
+
+                        <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                            <p style={{ fontSize: '12px', marginLeft: '300px', marginTop: '-40px', display: 'flex', alignItems: 'center' }}><StarOutlineIcon sx={{ fontSize: '20px', verticalAlign: 'middle' }} /> 4.96</p>
+                        </Box>
                     </Grid>
 
 

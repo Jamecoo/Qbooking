@@ -1,52 +1,42 @@
 import { TextField, Button, Typography, Box, Grid } from '@mui/material';
-import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
+import { Link } from 'react-router-dom';
 import InputAdornment from '@mui/material/InputAdornment';
-import AccessTimeIcon from '@mui/icons-material/AccessTime';
+
+//images
 import Room1 from '../../img/Room2.jpg'
 import Room2 from '../../img/Room3.jpg'
+
+//icons
+import AccessTimeIcon from '@mui/icons-material/AccessTime';
+import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import CircleIcon from '@mui/icons-material/Circle';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import { useState } from 'react';
 import IconButton from '@mui/material/IconButton';
 import StarOutlineIcon from '@mui/icons-material/StarOutline';
-import { Link } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
 
 
+//Controller
+import useMainController from './controllers';
 
 const Home = () => {
 
-    const [isFavorite, setIsFavorite] = useState(false);
-
-    const handleFavoriteClick = () => {
-        setIsFavorite(!isFavorite);
-    };
-
-    const [selectedLink, setSelectedLink] = useState<string>('');
-
-    const handleLinkClick = (link: string) => {
-        setSelectedLink(link);
-    };
-
-    const navigate = useNavigate();
-
-    const handleButtonClick = () => {
-        
-        navigate('/filter');
-    };
-
+    const controller = useMainController();
 
     return (
         <Box sx={{ display: 'flex', minHeight: '100vh', justifyContent: 'center' }}>
             <Box sx={{ maxWidth: 400, padding: 3, width: '430px', backgroundColor: '#E8E8E8' }}>
                 <Box sx={{ display: 'flex', justifyContent: 'center' }}>
                     <TextField
-                        sx={{ backgroundColor: 'white', width: '100%' }}
+                        sx={{ width: '100%' }}
                         type='text'
                         placeholder='Where are you going?...'
                         fullWidth
                         InputProps={{
+                            style: {
+                                borderRadius: '30px', backgroundColor: 'white'
+
+                            },
                             startAdornment: (
                                 <InputAdornment position="start">
                                     <SearchOutlinedIcon />
@@ -54,7 +44,7 @@ const Home = () => {
                             ),
                             endAdornment: (
                                 <InputAdornment position="end">
-                                    <Button variant="contained" onClick={handleButtonClick} sx={{ backgroundColor: '#282828', color: 'white', borderRadius: '20px', fontSize: '12px' }}>
+                                    <Button variant="contained" onClick={() => controller.handleButtonClick('/filter')} sx={{ backgroundColor: '#282828', color: 'white', borderRadius: '20px', fontSize: '12px', textTransform: 'none' }}>
                                         Filter<AccessTimeIcon sx={{ fontSize: 'medium' }} />
                                     </Button>
                                 </InputAdornment>
@@ -74,10 +64,10 @@ const Home = () => {
                                 borderRadius: '20px',
                                 width: '150px',
                                 justifyContent: 'center',
-                                color: selectedLink === '/home' ? 'white' : 'black',
-                                backgroundColor: selectedLink === '/home' ? 'black' : 'white',
+                                color: controller.selectedLink === '/home' ? 'white' : 'black',
+                                backgroundColor: controller.selectedLink === '/home' ? 'black' : 'white',
                             }}
-                            onClick={() => handleLinkClick('/home')}
+                            onClick={() => controller.handleLinkClick('/home')}
                         >
                             All room
                         </Link>
@@ -91,28 +81,38 @@ const Home = () => {
                                 borderRadius: '20px',
                                 width: '150px',
                                 justifyContent: 'center',
-                                color: selectedLink === '/available' ? 'white' : 'black',
-                                backgroundColor: selectedLink === '/available' ? 'black' : 'white',
+                                color: controller.selectedLink === '/available' ? 'white' : 'black',
+                                backgroundColor: controller.selectedLink === '/available' ? 'black' : 'white',
                             }}
-                            onClick={() => handleLinkClick('/available')}
+                            onClick={() => controller.handleLinkClick('/available')}
                         >
                             Available room
                         </Link>
                     </Box>
                 </Box>
 
+                {/* {data.map((item, index) => {
+                    return <Box key={index}>
+                        {item.title}
+                        {item.description}
+                        {item.favorite}
+                        
+                    </Box>
+                }
+
+                )} */}
                 <Box sx={{ marginTop: '20px', position: 'relative' }}>
                     <Box height={261} sx={{ position: 'relative' }}>
                         <img style={{ objectFit: 'cover', width: '100%', height: '100%', borderRadius: '20px 20px 0 0' }} src={Room1} alt="" />
-                        <IconButton onClick={handleFavoriteClick} sx={{
+                        <IconButton onClick={controller.handleFavoriteClick1} sx={{
                             position: 'absolute',
                             top: '10px',
                             right: '10px',
-                            color: isFavorite ? 'red' : 'gray',
+                            color: controller.isFavorite1 ? 'red' : 'gray',
                             borderRadius: '50%',
                             boxShadow: '0 2px 5px rgba(0, 0, 0, 0.1)',
                         }}>
-                            {isFavorite ? <FavoriteIcon /> : <FavoriteBorderIcon />}
+                            {controller.isFavorite1 ? <FavoriteIcon /> : <FavoriteBorderIcon />}
                         </IconButton>
                     </Box>
 
@@ -134,7 +134,10 @@ const Home = () => {
                                 Floor 2
                             </p>
                             <p style={{ fontSize: '10px', fontStyle: 'normal', paddingLeft: '20px', marginTop: '2px', width: '250px' }}>This room is equipped with all the necessary equipment for lectures, meetings and negotiations.</p>
-                            <p style={{ fontSize: '12px', marginLeft: '320px', marginTop: '-40px' }}><StarOutlineIcon sx={{ fontSize: '15px' }} /> 4.96</p>
+
+                            <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                                <p style={{ fontSize: '12px', marginLeft: '300px', marginTop: '-40px', display: 'flex', alignItems: 'center' }}><StarOutlineIcon sx={{ fontSize: '20px', verticalAlign: 'middle' }} /> 4.96</p>
+                            </Box>
                         </Grid>
                     </Box>
                 </Box>
@@ -142,15 +145,15 @@ const Home = () => {
                 <Box sx={{ marginTop: '20px', position: 'relative' }}>
                     <Box height={261} sx={{ position: 'relative' }}>
                         <img style={{ objectFit: 'cover', width: '100%', height: '100%', borderRadius: '20px 20px 0 0' }} src={Room2} alt="" />
-                        <IconButton onClick={handleFavoriteClick} sx={{
+                        <IconButton onClick={controller.handleFavoriteClick2} sx={{
                             position: 'absolute',
                             top: '10px',
                             right: '10px',
-                            color: isFavorite ? 'red' : 'gray',
+                            color: controller.isFavorite2 ? 'red' : 'gray',
                             borderRadius: '50%',
                             boxShadow: '0 2px 5px rgba(0, 0, 0, 0.1)',
                         }}>
-                            {isFavorite ? <FavoriteIcon /> : <FavoriteBorderIcon />}
+                            {controller.isFavorite2 ? <FavoriteIcon /> : <FavoriteBorderIcon />}
                         </IconButton>
                     </Box>
 
@@ -172,7 +175,11 @@ const Home = () => {
                                 Floor 2
                             </p>
                             <p style={{ fontSize: '10px', fontStyle: 'normal', paddingLeft: '20px', marginTop: '2px', width: '250px' }}>This room is equipped with all the necessary equipment for lectures, meetings and negotiations.</p>
-                            <p style={{ fontSize: '12px', marginLeft: '320px', marginTop: '-40px' }}><StarOutlineIcon sx={{ fontSize: '15px' }} /> 4.96</p>
+
+                            <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                                <p style={{ fontSize: '12px', marginLeft: '300px', marginTop: '-40px', display: 'flex', alignItems: 'center' }}><StarOutlineIcon sx={{ fontSize: '20px', verticalAlign: 'middle' }} /> 4.96</p>
+                            </Box>
+
                         </Grid>
 
 
