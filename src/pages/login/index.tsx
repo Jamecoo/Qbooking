@@ -30,14 +30,16 @@ const LoginPage = () => {
             <Typography variant='h6' sx={{ marginBottom: '20px', fontWeight: '600', textAlign: 'center' }}>
                 Login to your Account
             </Typography>
-            <form onSubmit={controller.handleSubmit}>
+            <form onSubmit={controller.handleLogin}>
 
-                <TextField margin='normal' type='email' value={controller.email} label="Email or Phone number" variant="outlined" required fullWidth
-                    onChange={(e) => controller.setEmail(e.target.value)}
+                <TextField margin='normal' type='email' value={controller.contact} label="Email or Phone number" variant="outlined" required fullWidth
+                    onChange={(e) => controller.setContact(e.target.value)}
+                    error={controller.error ? true : false}    
                     InputProps={{
-                        style: { borderRadius: '10px' }
+                        style: { borderRadius: '10px',borderColor: controller.error ? 'red' : ''}
                     }} />
                 <TextField
+                    error={controller.error ? true : false}
                     type={controller.showPassword ? 'text' : 'password'}
                     value={controller.password}
                     label="Password"
@@ -47,7 +49,7 @@ const LoginPage = () => {
                     margin="normal"
                     onChange={(e) => controller.setPassword(e.target.value)}
                     InputProps={{
-                        style: { borderRadius: '10px' },
+                        style: { borderRadius: '10px'},
                         endAdornment: (
                             <InputAdornment position="end">
                                 <IconButton
@@ -63,7 +65,7 @@ const LoginPage = () => {
                     }}
                 />
 
-                {controller.errormessage && <div>{controller.errormessage}</div>}
+                {controller.errormessage && <div style={{color: 'red', fontSize: '12px', fontWeight: 600}}>{controller.errormessage}</div>}
 
                 <Box sx={{ display: 'flex', justifyContent: 'end' }}>
                     <Link to="/forgotPassword" style={{ textDecoration: 'none', color: 'black' }}>

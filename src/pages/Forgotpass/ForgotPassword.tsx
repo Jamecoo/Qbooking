@@ -24,7 +24,7 @@ export default function Forgot() {
 
                 <TextField margin='normal' type='email' label="Email or Phone number" variant="outlined" required fullWidth />
 
-                <Button type='submit' variant="contained" sx={{ width: '100%', height: '55px', backgroundColor: '#282828', borderRadius: '10px', marginTop: '10px', textTransform: 'none' }}> Search</Button>
+                <Button fullWidth type='submit' variant="contained" sx={{ height: '55px', backgroundColor: '#282828', borderRadius: '10px', marginTop: '10px', textTransform: 'none' }}> Search</Button>
 
             </Box>
         </Box>

@@ -1,7 +1,7 @@
 import { Box, Button, Typography } from "@mui/material";
 import Avatar from '@mui/material/Avatar';
 import ButtonGroup from '@mui/material/ButtonGroup';
-import { Link, useNavigate } from "react-router-dom";
+import { Link, } from "react-router-dom";
 import { Dialog, DialogTitle, DialogContent, DialogActions } from '@mui/material';
 
 //Icons
@@ -12,22 +12,15 @@ import VerifiedUserOutlinedIcon from '@mui/icons-material/VerifiedUserOutlined';
 import AssignmentOutlinedIcon from '@mui/icons-material/AssignmentOutlined';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
-//Signout
-import { app } from '../../firebase';
-import { getAuth } from "firebase/auth";
-import { useState } from "react";
 
 
-
+//Controller
+import useMainController from "./controllers";
 
 const Profile = () => {
 
-    const [open, setOpen] = useState(false);
+    const controller = useMainController();
 
-
-    //Variables
-    const auth = getAuth(app);
-    const navigate = useNavigate();
     const buttons = [
 
         <Link to="/edit-profile" key="one">
@@ -55,27 +48,7 @@ const Profile = () => {
         </Link>,
     ];
 
-    const handleClose = () => {
-        setOpen(false);
-    };
-
-    const handleOpen = () => {
-        setOpen(true);
-    };
-
-    //functions
-
-    const handleLogout = async () => {
-        try {
-            await auth.signOut();
-            console.log('User signed out successfully');
-
-            navigate('/');
-            setOpen(false);
-        } catch (error) {
-            console.error('Error signing out:', error);
-        }
-    };
+    
 
     return <Box sx={{ height: '932px',display: 'flex', minHeight: '100vh', justifyContent: 'center' }}>
         <Box sx={{ width: '100%', backgroundColor: 'white' }}>
@@ -116,18 +89,18 @@ const Profile = () => {
             </Box>
 
             <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '190px', padding: '30px' }}>
-                <Button onClick={handleOpen} fullWidth type='submit' variant="contained" sx={{ height: '59px', backgroundColor: '#282828', borderRadius: '10px', gap: '10px', textTransform: 'none', fontSize: '18px' }}>
+                <Button onClick={controller.handleOpen} fullWidth type='submit' variant="contained" sx={{ height: '59px', backgroundColor: '#282828', borderRadius: '10px', gap: '10px', textTransform: 'none', fontSize: '18px' }}>
                     <LogoutOutlinedIcon /> Logout
                 </Button>
 
-                <Dialog open={open} onClose={handleClose} sx={{ borderRadius: '20px'}}>
+                <Dialog open={controller.open} onClose={controller.handleClose} sx={{ borderRadius: '20px'}}>
                     <DialogTitle sx={{ backgroundColor: '#282828', color: 'white'}}>Logout Confirmation</DialogTitle>
                     <DialogContent  sx={{ backgroundColor: '#f0f0f0', borderRadius: '0 0 10px 10px', marginTop: '10px'}}>
                         <p>Are you sure you want to logout?</p>
                     </DialogContent>
                     <DialogActions sx={{ backgroundColor: '#f0f0f0', borderRadius: '0 0 10px 10px' }}>
-                        <Button onClick={handleClose} sx={{ color: 'black' }}>Cancel</Button>
-                        <Button onClick={handleLogout} sx={{ color: 'white', backgroundColor: '#282828' }}>Logout</Button>
+                        <Button onClick={controller.handleClose} sx={{ color: 'black' }}>Cancel</Button>
+                        <Button onClick={controller.handleLogout} sx={{ color: 'white', backgroundColor: '#282828' }}>Logout</Button>
                     </DialogActions>
                 </Dialog>
 

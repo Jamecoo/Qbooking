@@ -5,12 +5,12 @@ export interface BookingModel {
     _id: string;
     customerID: string;
     roomID: string;
-    room: RoomModel
+    room: RoomModel;
     roomName: string;
-    meettingDate: string;
-    meettingTime: string;
+    meetingDate: string;
+    meetingTime: string;
     startTime: string;
     endTime: string;
     equipments: EquipmentsEnum;
-    status_booking_done: boolean;
+    status_booking_done: boolean
 }

@@ -4,6 +4,9 @@ import { Box } from '@mui/material';
 import RoutesComponent from './routes';
 import BottomNav from './components/BottomNav';
 
+//fonts
+import 'typeface-roboto';
+
 
 function App() {
   return (
@@ -13,7 +16,7 @@ function App() {
           <Box sx={{ overflow: 'auto' }}>
             <RoutesComponent />
           </Box >
-          <Box sx={{ height: '20%', overflow: 'auto' }}>
+          <Box sx={{ height: '10%', overflow: 'auto' }}>
             <BottomNav />
           </Box>
         </Box>

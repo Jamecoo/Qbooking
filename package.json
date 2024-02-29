@@ -36,6 +36,7 @@
     "recharts": "^2.11.0",
     "sort-by": "^1.2.0",
     "styled-components": "^6.1.8",
+    "typeface-roboto": "^1.1.13",
     "utilities": "^1.0.6"
   },
   "devDependencies": {

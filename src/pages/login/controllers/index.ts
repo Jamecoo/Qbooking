@@ -1,25 +1,32 @@
-import { useState } from "react"
-
+import { FormEvent, useState } from "react"
+import { useNavigate } from 'react-router-dom';
 
 //signWithGoolge
-import { GoogleAuthProvider, signInWithPopup, signInWithEmailAndPassword, getAuth } from "firebase/auth";
+import { GoogleAuthProvider, signInWithPopup, getAuth, signInWithRedirect } from "firebase/auth";
 import { FacebookAuthProvider } from "firebase/auth";
 import { app } from '../../../firebase';
-import { useNavigate } from 'react-router-dom';
+
+import axios from "axios";
 
 
 const useMainController = () => {
     //Hooks
-    const [email, setEmail] = useState("")
-    const [password, setPassword] = useState("")
-    const [errormessage, _setErrorMessage] = useState("")
-    const [showPassword, setShowPassword] = useState(false);
+    
+    const [contact, setContact] = useState<string>("");
+    const [email, setEmail] = useState<string>("")
+    const [password, setPassword] = useState<string>("")
+    const [errormessage,_setErrorMessage] = useState<string>("")
+    const [showPassword, setShowPassword] = useState<Boolean>(false);
+    const [error, setError] = useState<any>(null);
+    const [_loggedInUser, _ser] = useState(null);
+    // const [errorinput, setErrorinput] = useState<boolean>(false);
 
     //variables
     const provider = new GoogleAuthProvider();
     const fbAuthProvider = new FacebookAuthProvider();
     const auth = getAuth(app);
     const navigate = useNavigate();
+
 
 
     const SIGN_WITH_GOOGLE = () => {
@@ -50,8 +57,8 @@ const useMainController = () => {
     // Login facebook
     const FacebookAuth = () => {
 
-        signInWithPopup(auth, fbAuthProvider)
-            .then((result) => {
+        signInWithRedirect(auth, fbAuthProvider)
+            .then((result: any) => {
                 const user = result.user;
                 console.log("user >>>", user)
                 navigate('/home');
@@ -67,21 +74,31 @@ const useMainController = () => {
 
     //Login Email, password
 
-    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+
+    const handleLogin = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-
-        signInWithEmailAndPassword(auth, email, password)
-            .then((userCredential) => {
-                console.log(userCredential)
-
-                navigate('/home')
-            }).catch((error) => {
-                console.log(error);
+        try {
+            const response = await axios.post('https://1399-2400-c180-21-ddb7-dbb-1e2a-1577-30e.ngrok-free.app/api/contact/login', {
+                contact,
+                password
             });
+            const { token } = response.data; 
+            localStorage.setItem('token', token);
+            localStorage.setItem('user', response.data.user);
+            setError(null);
+            navigate('/home')
+            
+        } catch (error: any) {
+            setError(error.response?.data?.message || "An error occurred");
+            console.log(error)
+        }
     };
 
 
     return {
+        error,
+        setContact,
+        contact,
         email,
         setEmail,
         password,
@@ -92,7 +109,7 @@ const useMainController = () => {
         handleClickShowPassword,
         handleMouseDownPassword,
         FacebookAuth,
-        handleSubmit
+        handleLogin,
 
 
     }

@@ -1,45 +1,25 @@
 import { TextField, Button, Typography, Box, Grid } from '@mui/material';
+import { Link } from 'react-router-dom';
+
+import Room1 from '../img/Room2.jpg'
+import Room2 from '../img/Room3.jpg'
+
+//Icons
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import InputAdornment from '@mui/material/InputAdornment';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
-import Room1 from '../img/Room2.jpg'
-import Room2 from '../img/Room3.jpg'
-import CircleIcon from '@mui/icons-material/Circle';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import { useState } from 'react';
 import IconButton from '@mui/material/IconButton';
 import StarOutlineIcon from '@mui/icons-material/StarOutline';
-import { Link, useNavigate } from 'react-router-dom';
+import CircleIcon from '@mui/icons-material/Circle';
 
-
+//Controller
+import useMainController from './controllers';
 
 const Available = () => {
 
-    const navigate = useNavigate();
-    const [isFavorite1, setIsFavorite1] = useState<boolean>(false); // State for Box 1 favorite status
-    const [isFavorite2, setIsFavorite2] = useState<boolean>(false);
-
-
-    //functions
-    const handleFavoriteClick1 = () => {
-        setIsFavorite1(prevFavorite => !prevFavorite); // Toggle the favorite status for Box 1
-    };
-
-    const handleFavoriteClick2 = () => {
-        setIsFavorite2(prevFavorite => !prevFavorite); // Toggle the favorite status for Box 2
-    };
-
-    const [selectedLink, setSelectedLink] = useState<string>('');
-
-    const handleLinkClick = (link: string) => {
-        setSelectedLink(link);
-    };
-
-    const handleButtonClick = () => {
-
-        navigate('/filter');
-    };
+    const controller = useMainController();
 
 
     return <Box sx={{ display: 'flex', minHeight: '100vh', justifyContent: 'center' }}>
@@ -61,7 +41,7 @@ const Available = () => {
                         ),
                         endAdornment: (
                             <InputAdornment position="end">
-                                <Button variant="contained" onClick={handleButtonClick} sx={{ backgroundColor: '#282828', color: 'white', borderRadius: '20px', fontSize: '12px', textTransform: 'none' }}>
+                                <Button variant="contained" onClick={() => controller.handleButtonClick('/filter')} sx={{ backgroundColor: '#282828', color: 'white', borderRadius: '20px', fontSize: '12px', textTransform: 'none' }}>
                                     Filter
                                     <AccessTimeIcon sx={{ fontSize: 'medium' }} />
                                 </Button>
@@ -81,10 +61,10 @@ const Available = () => {
                             borderRadius: '20px',
                             width: '150px',
                             justifyContent: 'center',
-                            color: selectedLink === '/home' ? 'white' : 'black',
-                            backgroundColor: selectedLink === '/home' ? 'black' : 'white',
+                            color: controller.selectedLink === '/home' ? 'white' : 'black',
+                            backgroundColor: controller.selectedLink === '/home' ? 'black' : 'white',
                         }}
-                        onClick={() => handleLinkClick('/home')}
+                        onClick={() => controller.handleLinkClick('/home')}
                     >
                         All room
                     </Link>
@@ -98,10 +78,10 @@ const Available = () => {
                             borderRadius: '20px',
                             width: '150px',
                             justifyContent: 'center',
-                            color: selectedLink === '/available' ? 'white' : 'black',
-                            backgroundColor: selectedLink === '/available' ? 'black' : 'white',
+                            color: controller.selectedLink === '/available' ? 'white' : 'black',
+                            backgroundColor: controller.selectedLink === '/available' ? 'black' : 'white',
                         }}
-                        onClick={() => handleLinkClick('/available')}
+                        onClick={() => controller.handleLinkClick('/available')}
                     >
                         Available room
                     </Link>
@@ -111,15 +91,15 @@ const Available = () => {
             <Box sx={{ marginTop: '20px', position: 'relative' }}>
                 <Box height={261} sx={{ position: 'relative' }}>
                     <img style={{ objectFit: 'cover', width: '100%', height: '100%', borderRadius: '20px 20px 0 0' }} src={Room1} alt="" />
-                    <IconButton onClick={handleFavoriteClick1} sx={{
+                    <IconButton onClick={controller.handleFavoriteClick1} sx={{
                         position: 'absolute',
                         top: '10px',
                         right: '10px',
-                        color: isFavorite1 ? 'red' : 'gray',
+                        color: controller.isFavorite1 ? 'red' : 'gray',
                         borderRadius: '50%',
                         boxShadow: '0 2px 5px rgba(0, 0, 0, 0.1)',
                     }}>
-                        {isFavorite1 ? <FavoriteIcon /> : <FavoriteBorderIcon />}
+                        {controller.isFavorite1 ? <FavoriteIcon /> : <FavoriteBorderIcon />}
                     </IconButton>
                 </Box>
 
@@ -152,15 +132,15 @@ const Available = () => {
             <Box sx={{ marginTop: '20px', position: 'relative' }}>
                 <Box height={261} sx={{ position: 'relative' }}>
                     <img style={{ objectFit: 'cover', width: '100%', height: '100%', borderRadius: '20px 20px 0 0' }} src={Room2} alt="" />
-                    <IconButton onClick={handleFavoriteClick2} sx={{
+                    <IconButton onClick={controller.handleFavoriteClick2} sx={{
                         position: 'absolute',
                         top: '10px',
                         right: '10px',
-                        color: isFavorite2 ? 'red' : 'gray',
+                        color: controller.isFavorite2 ? 'red' : 'gray',
                         borderRadius: '50%',
                         boxShadow: '0 2px 5px rgba(0, 0, 0, 0.1)',
                     }}>
-                        {isFavorite2 ? <FavoriteIcon /> : <FavoriteBorderIcon />}
+                        {controller.isFavorite2 ? <FavoriteIcon /> : <FavoriteBorderIcon />}
                     </IconButton>
                 </Box>
 

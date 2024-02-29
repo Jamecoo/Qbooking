@@ -1,6 +1,6 @@
 export interface RoomModel {
     _id: string;
-    images: string;
+    images: string[];
     roomName: string;
     is_active_status: boolean;
     floor: string;

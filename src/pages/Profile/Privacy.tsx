@@ -1,16 +1,11 @@
 import { Box, Button, IconButton, Typography } from "@mui/material";
-import { useNavigate } from "react-router-dom";
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import useMainController from "./controllers";
 
 
 const Privacy = () => {
 
-    const navigate = useNavigate();
-
-    const handleButtonClick = () => {
-
-        navigate('/profile');
-    };
+    const controller = useMainController();
 
 
     return <Box sx={{ display: 'flex', minHeight: '100vh', justifyContent: 'center' }}>
@@ -28,7 +23,7 @@ const Privacy = () => {
 
                 }}>
 
-                <IconButton onClick={handleButtonClick}>
+                <IconButton onClick={() => controller.handleButtonClick('/profile')}>
                     <ArrowBackIosIcon sx={{ fontSize: '20px', fontWeight: 700, color: 'black' }} />
                 </IconButton>
 

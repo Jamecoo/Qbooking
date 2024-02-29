@@ -1,6 +1,5 @@
 import { Box, IconButton, Typography } from "@mui/material";
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
-import { useNavigate } from "react-router-dom";
 
 //images
 import Laos from '../../img/Laos.svg'
@@ -8,25 +7,11 @@ import US from '../../img/US.jpg'
 
 //icons
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
-import { useState } from "react";
+import useMainController from "./controllers";
 
 const Language = () => {
 
-    const [selectedLanguage, setSelectedLanguage] = useState<string | null>(null);
-
-    const navigate = useNavigate();
-
-    //Functions
-
-    const handleLanguageSelect = (language: string) => {
-        setSelectedLanguage(language);
-    };
-
-    const handleButtonClick = () => {
-
-        navigate('/profile');
-    };
-
+    const controller = useMainController();
 
     return <Box sx={{ display: 'flex', minHeight: '100vh', justifyContent: 'center' }}>
         <Box sx={{ width: '100%', backgroundColor: 'white' }}>
@@ -43,7 +28,7 @@ const Language = () => {
 
                 }}>
 
-                <IconButton onClick={handleButtonClick}>
+                <IconButton onClick={() => controller.handleButtonClick('/profile')}>
                     <ArrowBackIosIcon sx={{ fontSize: '20px', fontWeight: 700, color: 'black' }} />
                 </IconButton>
 
@@ -65,8 +50,8 @@ const Language = () => {
                     <p style={{ fontSize: '12px' }}>English</p>
                 </Box>
                 <Box sx={{ display: 'flex', alignItems: 'center', marginLeft: '130px' }}>
-                    <IconButton onClick={() => handleLanguageSelect('English')}>
-                        <CheckCircleOutlineIcon sx={{ fontSize: '25px', color: selectedLanguage === 'English' ? 'black' : 'inherit' }} />
+                    <IconButton onClick={() => controller.handleLanguageSelect('English')}>
+                        <CheckCircleOutlineIcon sx={{ fontSize: '25px', color: controller.selectedLanguage === 'English' ? 'black' : 'inherit' }} />
                     </IconButton>
                 </Box>
             </Box>
@@ -83,8 +68,8 @@ const Language = () => {
                     <p style={{ fontSize: '12px' }}>Laos</p>
                 </Box>
                 <Box sx={{ display: 'flex', alignItems: 'center', marginLeft: '155px' }}>
-                    <IconButton onClick={() => handleLanguageSelect('Laos')}>
-                        <CheckCircleOutlineIcon sx={{ fontSize: '25px', color: selectedLanguage === 'Laos' ? 'black' : 'inherit' }} />
+                    <IconButton onClick={() => controller.handleLanguageSelect('Laos')}>
+                        <CheckCircleOutlineIcon sx={{ fontSize: '25px', color: controller.selectedLanguage === 'Laos' ? 'black' : 'inherit' }} />
                     </IconButton>
                 </Box>
             </Box>

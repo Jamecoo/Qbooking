@@ -1,17 +1,14 @@
-import { Avatar, Box, Typography, IconButton, TextField, FormControl, InputLabel, Select, MenuItem, SelectChangeEvent } from "@mui/material";
+import { Avatar, Box, Typography, IconButton, TextField, FormControl, InputLabel, Select, MenuItem } from "@mui/material";
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
-import { useNavigate } from "react-router-dom";
 import EditIcon from '@mui/icons-material/Edit';
-import { useState } from "react";
+import useMainController from "./controllers";
 
 
 const EditProfile = () => {
 
-    const [country, setCountry] = useState('');
+    const controller = useMainController();
 
-    const [gender, setGender] = useState<string>('');
-
-    const navigate = useNavigate();
+    
 
     const countries = [
         'Afghanistan',
@@ -213,18 +210,7 @@ const EditProfile = () => {
 
 
     //function
-    const handleButtonClick = () => {
-
-        navigate('/profile');
-    };
-
-    const handleChangeCountry = (event: SelectChangeEvent) => {
-        setCountry(event.target.value as string);
-    };
-
-    const handleChange = (event: SelectChangeEvent) => {
-        setGender(event.target.value as string);
-    };
+    
 
 
     return <Box sx={{ display: 'flex', minHeight: '100vh', justifyContent: 'center' }}>
@@ -241,7 +227,7 @@ const EditProfile = () => {
 
                 }}>
 
-                <IconButton onClick={handleButtonClick}>
+                <IconButton onClick={() => controller.handleButtonClick('/profile')}>
                     <ArrowBackIosIcon sx={{ fontSize: '20px', fontWeight: 700, color: 'black' }} />
                 </IconButton>
 
@@ -284,9 +270,10 @@ const EditProfile = () => {
 
                 <FormControl fullWidth margin="normal">
                     <InputLabel id="demo-simple-select-label">Gender</InputLabel>
-                    <Select value={gender} onChange={handleChange} label="Gender" sx={{ borderRadius: '10px', height: '62px' }} >
+                    <Select value={controller.gender} onChange={controller.handleChange} label="Gender" sx={{ borderRadius: '10px', height: '62px' }} >
                         <MenuItem value="female">Female</MenuItem>
                         <MenuItem value="male">Male</MenuItem>
+                        <MenuItem value="Others">Others</MenuItem>
                     </Select>
                 </FormControl>
 
@@ -296,7 +283,7 @@ const EditProfile = () => {
 
                 <FormControl fullWidth margin="normal">
                     <InputLabel id="demo-simple-select-label">Country</InputLabel>
-                    <Select value={country} onChange={handleChangeCountry} label="Gender" sx={{ borderRadius: '10px', height: '62px' }}>
+                    <Select value={controller.country} onChange={controller.handleChangeCountry} label="Gender" sx={{ borderRadius: '10px', height: '62px' }}>
                         {countries.map((country, index) => (
                             <MenuItem key={index} value={country}>
                                 {country}

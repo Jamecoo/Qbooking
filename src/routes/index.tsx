@@ -7,6 +7,7 @@ import Submit from '../pages/login/CreateSubmit'
 import Otppage from '../pages/OTP/OTPpages'
 //Home
 import Home from '../pages/Home'
+import SearchPage from '../pages/Home/components/SearchPage'
 import Forgot from '../pages/Forgotpass/ForgotPassword'
 import Available from '../components/Available'
 import Filter from '../components/Filter'
@@ -16,6 +17,7 @@ import Favorite from '../pages/Favorite/Favorite'
 import Notifications from '../pages/Notifications'
 //Profile
 import Profile from '../pages/Profile'
+
 import EditProfile from '../pages/Profile/EditProfile'
 import Language from '../pages/Profile/Language'
 import Privacy from '../pages/Profile/Privacy'
@@ -25,10 +27,12 @@ import SettingNoti from '../pages/Notifications/SettingNoti'
 import HomeBooking from '../pages/Booking/HomeBooking'
 import EditBooking from '../pages/Booking/EditBooking'
 import BillBooking from '../pages/Booking/BillBooking'
-
+// import useMainController from './controller'
 
 
 const RoutesComponent = () => {
+
+  // const controller = useMainController();
 
   return <Routes>
     <Route path='/' element={<LoginPage />} />
@@ -39,6 +43,7 @@ const RoutesComponent = () => {
 
     {/* Home */}
     <Route path='/home' element={<Home />} />
+    <Route path='/search' element={<SearchPage />} />
     <Route path='/available' element={<Available />} />
     <Route path='/filter' element={<Filter />} />
     
@@ -62,7 +67,6 @@ const RoutesComponent = () => {
     <Route path='/editbooking' element={<EditBooking />} />
     <Route path='/billbooking' element={<BillBooking />} />
 
-    
   </Routes>
 
 

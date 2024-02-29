@@ -1,6 +1,4 @@
-import * as React from 'react';
 import { Box } from '@mui/material';
-import { useLocation, useNavigate } from 'react-router-dom';
 import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 
@@ -11,44 +9,18 @@ import BookmarkBorderOutlinedIcon from '@mui/icons-material/BookmarkBorderOutlin
 import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNoneOutlined';
 import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
 
+//Controller
+import useMainController from './controllers';
 
 
 const BottomNav = () => {
 
-    
-
-    const [value, setValue] = React.useState('Home');
-    const navigate = useNavigate(); // Initialize useNavigate
-    const location = useLocation();
-
-    //functions
+    const controller = useMainController();
 
     
-
-    const shouldShowBottomNav = !(location.pathname === "/" || location.pathname === "/register" 
-    || location.pathname === "/forgotPassword" || location.pathname === "/submit" || location.pathname === "/otpages");
-
-
-    const handleChange = (_event: React.SyntheticEvent, newValue: string) => {
-        setValue(newValue);
-
-        // Use navigate to redirect to the desired path
-        if (newValue === 'home') {
-            navigate('/home');
-        } else if (newValue === 'favorites') {
-            navigate('/favorites');
-        } else if (newValue === 'booking') {
-            navigate('/booking');
-        } else if (newValue === 'notifications') {
-            navigate('/notifications');
-        } else if (newValue === 'profile') {
-            navigate('/profile');
-        }
-    };
-
-    return shouldShowBottomNav && (
+    return controller.shouldShowBottomNav && (
         <Box sx={{ display: 'flex', justifyContent: 'center',}}>
-            <BottomNavigation showLabels value={value} onChange={handleChange}>
+            <BottomNavigation showLabels value={controller.value} onChange={controller.handleChange}>
                 <BottomNavigationAction
                     label="Home"
                     value="home"
