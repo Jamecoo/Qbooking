@@ -8,10 +8,10 @@ import TodayOutlinedIcon from '@mui/icons-material/TodayOutlined';
 import SmsOutlinedIcon from '@mui/icons-material/SmsOutlined';
 
 //avatar
-import Nawin from '../../img/321048287_1345101272900864_6610096451095455445_n.jpg'
+import Nawin from '../../assets/img/321048287_1345101272900864_6610096451095455445_n.jpg'
 import Avatar from '@mui/material/Avatar';
 
-import useMainController from "./controllers";
+import useMainController from "../controllers";
 
 
 const BillBooking = () => {

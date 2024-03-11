@@ -7,7 +7,7 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import IconButton from '@mui/material/IconButton';
 
 //images
-import Logo from '../../../public/Logo.png'
+import Logo from '../../assets/img/Logo.png'
 
 
 import useMainController from './controllers';

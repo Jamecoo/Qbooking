@@ -1,6 +1,6 @@
 import { Box, Button, IconButton, Typography } from "@mui/material";
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
-import useMainController from "./controllers";
+import useMainController from "../controllers";
 
 
 const Privacy = () => {

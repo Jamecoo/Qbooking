@@ -2,12 +2,14 @@ import { Box, IconButton, Typography } from "@mui/material";
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 
 //images
-import Laos from '../../img/Laos.svg'
-import US from '../../img/US.jpg'
+import Laos from '../../../assets/img/Laos.svg'
+import US from '../../../assets/img/US.jpg'
 
 //icons
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
-import useMainController from "./controllers";
+
+//Controller
+import useMainController from "../controllers";
 
 const Language = () => {
 

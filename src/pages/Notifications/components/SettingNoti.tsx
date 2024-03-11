@@ -2,8 +2,8 @@ import { Box, FormControlLabel, IconButton, Typography } from "@mui/material";
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 
 //Controller
-import useMainController from "./controllers";
-import IosButton  from "./components/IosButton";
+import useMainController from "../controllers";
+import IosButton  from "./IosButton";
 
 
 
@@ -42,7 +42,7 @@ const SettingNoti = () => {
                     </Typography>
                 </Box>
 
-                <Box sx={{ paddingX: '20px', display: 'grid', gridTemplateColumns: '1fr 10%' }}>
+                <Box sx={{ paddingX: '20px', display: 'grid', gridTemplateColumns: '1fr 15%' }}>
                     <Box sx={{ display: 'flex', alignItems: 'center' }}>
                         <p>General Notifitcation</p>
                     </Box>
@@ -52,7 +52,7 @@ const SettingNoti = () => {
                     />
                 </Box>
 
-                <Box sx={{ paddingX: '20px', display: 'grid', gridTemplateColumns: '1fr 10%' }}>
+                <Box sx={{ paddingX: '20px', display: 'grid', gridTemplateColumns: '1fr 15%' }}>
                     <Box sx={{ display: 'flex', alignItems: 'center' }}>
                         <p>Sound</p>
                     </Box>
@@ -62,7 +62,7 @@ const SettingNoti = () => {
                     />
                 </Box>
 
-                <Box sx={{ paddingX: '20px', display: 'grid', gridTemplateColumns: '1fr 10%' }}>
+                <Box sx={{ paddingX: '20px', display: 'grid', gridTemplateColumns: '1fr 15%' }}>
                     <Box sx={{ display: 'flex', alignItems: 'center' }}>
                         <p>Vibrate</p>
                     </Box>
@@ -83,7 +83,7 @@ const SettingNoti = () => {
                     </Typography>
                 </Box>
 
-                <Box sx={{ paddingX: '20px', display: 'grid', gridTemplateColumns: '1fr 10%' }}>
+                <Box sx={{ paddingX: '20px', display: 'grid', gridTemplateColumns: '1fr 15%' }}>
                     <Box sx={{ display: 'flex', alignItems: 'center' }}>
                         <p>App updates</p>
                     </Box>
@@ -94,7 +94,7 @@ const SettingNoti = () => {
                     />
                 </Box>
 
-                <Box sx={{ paddingX: '20px', display: 'grid', gridTemplateColumns: '1fr 10%' }}>
+                <Box sx={{ paddingX: '20px', display: 'grid', gridTemplateColumns: '1fr 15%' }}>
                     <Box sx={{ display: 'flex', alignItems: 'center' }}>
                         <p>Bill Reminder</p>
                     </Box>
@@ -104,7 +104,7 @@ const SettingNoti = () => {
                     />
                 </Box>
 
-                <Box sx={{ paddingX: '20px', display: 'grid', gridTemplateColumns: '1fr 10%' }}>
+                <Box sx={{ paddingX: '20px', display: 'grid', gridTemplateColumns: '1fr 15%' }}>
                     <Box sx={{ display: 'flex', alignItems: 'center' }}>
                         <p>Promotion</p>
                     </Box>
@@ -114,7 +114,7 @@ const SettingNoti = () => {
                     />
                 </Box>
 
-                <Box sx={{ paddingX: '20px', display: 'grid', gridTemplateColumns: '1fr 10%' }}>
+                <Box sx={{ paddingX: '20px', display: 'grid', gridTemplateColumns: '1fr 15%' }}>
                     <Box sx={{ display: 'flex', alignItems: 'center' }}>
                         <p>Discount Avaiable</p>
                     </Box>
@@ -124,7 +124,7 @@ const SettingNoti = () => {
                     />
                 </Box>
 
-                <Box sx={{ paddingX: '20px', display: 'grid', gridTemplateColumns: '1fr 10%' }}>
+                <Box sx={{ paddingX: '20px', display: 'grid', gridTemplateColumns: '1fr 15%' }}>
                     <Box sx={{ display: 'flex', alignItems: 'center' }}>
                         <p>Payment Request</p>
                     </Box>
@@ -145,7 +145,7 @@ const SettingNoti = () => {
                     </Typography>
                 </Box>
 
-                <Box sx={{ paddingX: '20px', display: 'grid', gridTemplateColumns: '1fr 10%' }}>
+                <Box sx={{ paddingX: '20px', display: 'grid', gridTemplateColumns: '1fr 15%' }}>
                     <Box sx={{ display: 'flex', alignItems: 'center' }}>
                         <p>New Service Available</p>
                     </Box>
@@ -155,7 +155,7 @@ const SettingNoti = () => {
                     />
                 </Box>
 
-                <Box sx={{ paddingX: '20px', display: 'grid', gridTemplateColumns: '1fr 10%' }}>
+                <Box sx={{ paddingX: '20px', display: 'grid', gridTemplateColumns: '1fr 15%' }}>
                     <Box sx={{ display: 'flex', alignItems: 'center' }}>
                         <p>New Room Available</p>
                     </Box>

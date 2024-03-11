@@ -1,7 +1,7 @@
 import { Avatar, Box, Typography, IconButton, TextField, FormControl, InputLabel, Select, MenuItem } from "@mui/material";
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import EditIcon from '@mui/icons-material/Edit';
-import useMainController from "./controllers";
+import useMainController from "../controllers";
 
 
 const EditProfile = () => {

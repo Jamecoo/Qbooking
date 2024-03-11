@@ -8,8 +8,7 @@ const useMainController = () => {
     //Hooks
     const [selectedDate, setSelectedDate] = useState<Date>(new Date());
     const [value, setValue] = useState<string>('Home');
-    const [isFavorite1, setIsFavorite1] = useState<boolean>(false); // State for Box 1 favorite status
-    const [isFavorite2, setIsFavorite2] = useState<boolean>(false);
+    const [Like, setLike] = useState<string[]>([]);
     const [selectedLink, setSelectedLink] = useState<string>('');
     const [inputStates, setInputstates] = useState({
         input1: 0,
@@ -23,7 +22,6 @@ const useMainController = () => {
     const location = useLocation();
 
 
-6
     //Functions
     const handleDecrement = (inputKey: keyof typeof inputStates) => {
         setInputstates(prevStates => ({
@@ -47,13 +45,15 @@ const useMainController = () => {
         navigate(path);
     };
 
-    const handleFavoriteClick1 = () => {
-        setIsFavorite1(prevFavorite => !prevFavorite); // Toggle the favorite status for Box 1
+
+    const toggleLike = (icon: string) => {
+        if (Like.includes(icon)) {
+            setLike(prevIcons => prevIcons.filter(item => item !== icon)); // Remove the icon if already liked
+        } else {
+            setLike(prevIcons => [...prevIcons, icon]); // Add the icon to liked icons
+        }
     };
 
-    const handleFavoriteClick2 = () => {
-        setIsFavorite2(prevFavorite => !prevFavorite); // Toggle the favorite status for Box 2
-    };
 
     //BottomNav
 
@@ -109,10 +109,6 @@ const useMainController = () => {
     return {
         value,
         setValue,
-        isFavorite1,
-        isFavorite2,
-        setIsFavorite1,
-        setIsFavorite2,
         setSelectedLink,
         selectedLink,
         handleLinkClick,
@@ -126,8 +122,10 @@ const useMainController = () => {
         selectedDate,
         handleDecrement,
         handleIncrement,
-        handleFavoriteClick1,
-        handleFavoriteClick2
+        toggleLike,
+        Like,
+
+
 
 
     }

@@ -1,8 +1,8 @@
 import { TextField, Button, Typography, Box, Grid } from '@mui/material';
 import { Link } from 'react-router-dom';
 
-import Room1 from '../img/Room2.jpg'
-import Room2 from '../img/Room3.jpg'
+import Room1 from '../assets/img/Room2.jpg'
+import Room2 from '../assets/img/Room3.jpg'
 
 //Icons
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
@@ -91,15 +91,15 @@ const Available = () => {
             <Box sx={{ marginTop: '20px', position: 'relative' }}>
                 <Box height={261} sx={{ position: 'relative' }}>
                     <img style={{ objectFit: 'cover', width: '100%', height: '100%', borderRadius: '20px 20px 0 0' }} src={Room1} alt="" />
-                    <IconButton onClick={controller.handleFavoriteClick1} sx={{
+                    <IconButton onClick={() => controller.toggleLike('icon1')} sx={{
                         position: 'absolute',
                         top: '10px',
                         right: '10px',
-                        color: controller.isFavorite1 ? 'red' : 'gray',
+                        color: controller.Like.includes('icon1') ? 'red' : 'Like',
                         borderRadius: '50%',
                         boxShadow: '0 2px 5px rgba(0, 0, 0, 0.1)',
                     }}>
-                        {controller.isFavorite1 ? <FavoriteIcon /> : <FavoriteBorderIcon />}
+                        {controller.Like.includes('icon1') ? <FavoriteIcon /> : <FavoriteBorderIcon />}
                     </IconButton>
                 </Box>
 
@@ -132,15 +132,15 @@ const Available = () => {
             <Box sx={{ marginTop: '20px', position: 'relative' }}>
                 <Box height={261} sx={{ position: 'relative' }}>
                     <img style={{ objectFit: 'cover', width: '100%', height: '100%', borderRadius: '20px 20px 0 0' }} src={Room2} alt="" />
-                    <IconButton onClick={controller.handleFavoriteClick2} sx={{
+                    <IconButton onClick={() => controller.toggleLike('icon2')} sx={{
                         position: 'absolute',
                         top: '10px',
                         right: '10px',
-                        color: controller.isFavorite2 ? 'red' : 'gray',
+                        color: controller.Like.includes('icon2') ? 'red' : 'gray',
                         borderRadius: '50%',
                         boxShadow: '0 2px 5px rgba(0, 0, 0, 0.1)',
                     }}>
-                        {controller.isFavorite2 ? <FavoriteIcon /> : <FavoriteBorderIcon />}
+                        {controller.Like.includes('icon2') ? <FavoriteIcon /> : <FavoriteBorderIcon />}
                     </IconButton>
                 </Box>
 

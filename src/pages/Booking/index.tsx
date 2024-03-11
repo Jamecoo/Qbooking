@@ -12,8 +12,8 @@ import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import AccessTimeOutlinedIcon from '@mui/icons-material/AccessTimeOutlined';
 
 //images
-import Room1 from '../../img/Room2.jpg'
-import Room2 from '../../img/Room3.jpg'
+import Room1 from '../../assets/img/Room2.jpg'
+import Room2 from '../../assets/img/Room3.jpg'
 
 //Mockup
 import { BookingModel } from '../../models/booking';

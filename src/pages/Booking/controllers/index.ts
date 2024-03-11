@@ -1,10 +1,14 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import { BookingModel } from "../../../models/booking";
 
 //images
-import Room1 from '../../../img/Room2.jpg'
-import Room2 from '../../../img/Room3.jpg'
+import Room1 from '../../../assets/img/Room2.jpg'
+import Room2 from '../../../assets/img/Room3.jpg'
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+
+//Models
+
 
 const useMainController = () => {
 
@@ -58,6 +62,25 @@ const useMainController = () => {
         navigate(path);
     };
 
+    useEffect(() => {
+        const fetchData = async () => {
+            // try {
+                axios.defaults.headers.common.Authorization = `Bearer  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZTE0YTUwZTdjNDU4OGYxZjZhOWU2ZCIsImlhdCI6MTcwOTI2NjA5OSwiZXhwIjoxNzA5Mjk0ODk5fQ.wVKVPb-vm5GOnnv4pYVPpJfG55wccm4k1643lCdx1S0`
+                const response = await axios.get('https://7ec0-115-84-115-100.ngrok-free.app/api/booking');
+                console.log(response);
+
+            //     setRooms(response.data);
+            //     setLoading(false);
+            // } catch (error : any) {
+            //     setError('Error fetching data: ' + error?.message); 
+            //     setLoading(false);
+            // }
+        };
+
+        fetchData();
+    }, []); 
+
+    // Dependency array is empty for one-time fetch
 
     return {
         data,

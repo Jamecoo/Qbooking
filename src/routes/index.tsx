@@ -2,37 +2,39 @@ import { Routes, Route  } from 'react-router-dom'
 
 //Login
 import LoginPage from '../pages/login/index'
-import Create from '../pages/register/CreateAccount'
-import Submit from '../pages/login/CreateSubmit'
-import Otppage from '../pages/OTP/OTPpages'
+import Create from '../pages/register'
+import Submit from '../pages/login/components/CreateSubmit'
+import Otppage from '../pages/OTP'
 //Home
 import Home from '../pages/Home'
 import SearchPage from '../pages/Home/components/SearchPage'
-import Forgot from '../pages/Forgotpass/ForgotPassword'
+import Forgot from '../pages/Forgotpass/index'
 import Available from '../components/Available'
 import Filter from '../components/Filter'
 //Favorite
-import Favorite from '../pages/Favorite/Favorite'
+import Favorite from '../pages/Favorite'
 //Notificatiobns
+import SettingNoti from '../pages/Notifications/components/SettingNoti'
 import Notifications from '../pages/Notifications'
 //Profile
 import Profile from '../pages/Profile'
-
-import EditProfile from '../pages/Profile/EditProfile'
-import Language from '../pages/Profile/Language'
-import Privacy from '../pages/Profile/Privacy'
+import EditProfile from '../pages/Profile/components/EditProfile'
+import Language from '../pages/Profile/components/Language'
+import Privacy from '../pages/Profile/components/Privacy'
 import Booking from '../pages/Booking'
-import Terms from '../pages/Profile/Terms'
-import SettingNoti from '../pages/Notifications/SettingNoti'
-import HomeBooking from '../pages/Booking/HomeBooking'
-import EditBooking from '../pages/Booking/EditBooking'
-import BillBooking from '../pages/Booking/BillBooking'
-// import useMainController from './controller'
+import Terms from '../pages/Profile/components/Terms'
+
+//Bookings
+
+import HomeBooking from '../pages/Booking/components/HomeBooking'
+import EditBooking from '../pages/Booking/components/EditBooking'
+import BillBooking from '../pages/Booking/components/HomeBooking'
+
 
 
 const RoutesComponent = () => {
 
-  // const controller = useMainController();
+
 
   return <Routes>
     <Route path='/' element={<LoginPage />} />

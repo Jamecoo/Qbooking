@@ -11,13 +11,10 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import IconButton from '@mui/material/IconButton';
 import StarOutlineIcon from '@mui/icons-material/StarOutline';
 
-
 //Controller
 import useMainController from './controllers';
 
 const Home = () => {
-
-
 
     const controller = useMainController();
 
@@ -91,125 +88,51 @@ const Home = () => {
                 </Box>
 
                 {/* {data.map((item, index) => {
-                    return <Box key={index}>
-                        {item.title}
-                        {item.description}
-                        {item.favorite}
-                        
-                    </Box>
-                }
+                return <Box key={index}>
+                    {item.title}
+                    {item.description}
+                    {item.favorite}
+                    
+                </Box>
+            }
 
-                )} */}
-                {/* <Box sx={{ marginTop: '20px', position: 'relative' }}>
-                    <Box height={261} sx={{ position: 'relative' }}>
-                        <img style={{ objectFit: 'cover', width: '100%', height: '100%', borderRadius: '20px 20px 0 0' }} src={Room1} alt="" />
-                        <IconButton onClick={controller.handleFavoriteClick1} sx={{
-                            position: 'absolute',
-                            top: '10px',
-                            right: '10px',
-                            color: controller.isFavorite1 ? 'red' : 'gray',
-                            borderRadius: '50%',
-                            boxShadow: '0 2px 5px rgba(0, 0, 0, 0.1)',
-                        }}>
-                            {controller.isFavorite1 ? <FavoriteIcon /> : <FavoriteBorderIcon />}
-                        </IconButton>
-                    </Box>
-
-                    <Box sx={{ height: '100px', backgroundColor: 'white', borderRadius: '0 0 20px 20px', display: 'flex', flexDirection: 'column' }}>
-                        <Grid container alignItems="center" sx={{ columnGap: '100px' }}>
-                            <Typography sx={{ padding: '10px 20px', fontWeight: 600 }}>
-                                iQURi Room
-                            </Typography>
-                            <p style={{ fontSize: '10px', color: 'red', padding: '13px' }}>
-                                <CircleIcon sx={{ fontSize: '10px', verticalAlign: 'middle', marginRight: '5px' }} />
-                                Unavailable now
-                            </p>
-                            <p style={{ paddingLeft: '20px', fontSize: '10px' }}>
-                                Meeting room 204
-                            </p>
-                            <p style={{ fontSize: '10px', marginLeft: '-90px' }}>
-                                <CircleIcon sx={{ fontSize: '8px', verticalAlign: 'middle', marginRight: '5px' }} />
-
-                                Floor 2
-                            </p>
-                            <p style={{ fontSize: '10px', fontStyle: 'normal', paddingLeft: '20px', marginTop: '2px', width: '250px' }}>This room is equipped with all the necessary equipment for lectures, meetings and negotiations.</p>
-
-                            <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                                <p style={{ fontSize: '12px', marginLeft: '300px', marginTop: '-40px', display: 'flex', alignItems: 'center' }}><StarOutlineIcon sx={{ fontSize: '20px', verticalAlign: 'middle' }} /> 4.96</p>
-                            </Box>
-                        </Grid>
-                    </Box>
-                </Box> */}
-
-                {/* <Box sx={{ marginTop: '20px', position: 'relative' }}>
-                    <Box height={261} sx={{ position: 'relative' }}>
-                        <img style={{ objectFit: 'cover', width: '100%', height: '100%', borderRadius: '20px 20px 0 0' }} src={Room2} alt="" />
-                        <IconButton onClick={controller.handleFavoriteClick2} sx={{
-                            position: 'absolute',
-                            top: '10px',
-                            right: '10px',
-                            color: controller.isFavorite2 ? 'red' : 'gray',
-                            borderRadius: '50%',
-                            boxShadow: '0 2px 5px rgba(0, 0, 0, 0.1)',
-                        }}>
-                            {controller.isFavorite2 ? <FavoriteIcon /> : <FavoriteBorderIcon />}
-                        </IconButton>
-                    </Box>
-
-                    <Box sx={{ height: '100px', backgroundColor: 'white', borderRadius: '0 0 20px 20px', display: 'flex', flexDirection: 'column' }}>
-                        <Grid container alignItems="center" sx={{ columnGap: '100px' }}>
-                            <Typography sx={{ padding: '10px 20px', fontWeight: 600 }}>
-                                iQURi Room
-                            </Typography>
-                            <p style={{ fontSize: '10px', color: 'red', padding: '13px' }}>
-                                <CircleIcon sx={{ fontSize: '10px', verticalAlign: 'middle', marginRight: '5px' }} />
-                                Unavailable now
-                            </p>
-                            <p style={{ paddingLeft: '20px', fontSize: '10px' }}>
-                                Meeting room 206
-                            </p>
-                            <p style={{ fontSize: '10px', marginLeft: '-90px' }}>
-                                <CircleIcon sx={{ fontSize: '8px', verticalAlign: 'middle', marginRight: '5px' }} />
-
-                                Floor 2
-                            </p>
-                            <p style={{ fontSize: '10px', fontStyle: 'normal', paddingLeft: '20px', marginTop: '2px', width: '250px' }}>This room is equipped with all the necessary equipment for lectures, meetings and negotiations.</p>
-
-                            <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                                <p style={{ fontSize: '12px', marginLeft: '300px', marginTop: '-40px', display: 'flex', alignItems: 'center' }}><StarOutlineIcon sx={{ fontSize: '20px', verticalAlign: 'middle' }} /> 4.96</p>
-                            </Box>
-
-                        </Grid>
+            )} */}
 
 
-                    </Box>
-                </Box> */}
-
-                {/* <Box sx={{ marginTop: '20px', position: 'relative' }}>
+                <Box sx={{ marginTop: '20px', position: 'relative' }}>
                     {controller.rooms?.map((room) => (
                         <Box key={room._id} sx={{ marginTop: '20px', position: 'relative' }}>
-                            <Box height={261} sx={{ position: 'relative' }}>
-                                {room.images && room.images.length > 0 && (
-                                    <img style={{ objectFit: 'cover', width: '100%', height: '100%', borderRadius: '20px 20px 0 0' }} src={room.images[0]} alt="" />
-                                )}
-                                <IconButton onClick={() => controller.handleFavoriteClick(room._id)} sx={{
-                                    position: 'absolute',
-                                    top: '10px',
-                                    right: '10px',
-                                    color: room.is_active_booked ? 'red' : 'gray',
-                                    borderRadius: '50%',
-                                    boxShadow: '0 2px 5px rgba(0, 0, 0, 0.1)',
-                                }}>
-                                    {room.is_active_booked ? <FavoriteIcon /> : <FavoriteBorderIcon />}
-                                </IconButton>
-                            </Box>
+                            {controller.imageData.map((item: any) => {
+                                console.log(item?.image[0]?.imageName);
+                                
+                                <Box key={item.id} sx={{ marginTop: '20px', position: 'relative' }}>
+                                    <Box height={261} sx={{ position: 'relative' }}>
+                                        <img style={{ objectFit: 'cover', width: '100%', height: '100%', borderRadius: '20px 20px 0 0' }} src={room?.images[0]} alt="" />
+
+                                        <IconButton
+                                            onClick={() => controller.toggleLike(item.id)}
+                                            sx={{
+                                                position: 'absolute',
+                                                top: '10px',
+                                                right: '10px',
+                                                color: controller.Like.includes(item.id) ? 'red' : 'gray',
+                                                borderRadius: '50%',
+                                                boxShadow: '0 2px 5px rgba(0, 0, 0, 0.1)',
+                                            }}
+                                        >
+                                            {controller.Like.includes(item.id) ? <FavoriteIcon /> : <FavoriteBorderIcon />}
+                                        </IconButton>
+                                    </Box>
+                                </Box>
+                            }
+                            )}
 
                             <Box sx={{ height: '100px', backgroundColor: 'white', borderRadius: '0 0 20px 20px', display: 'flex', flexDirection: 'column' }}>
                                 <Grid container alignItems="center" sx={{ columnGap: '100px' }}>
                                     <Typography sx={{ padding: '10px 20px', fontWeight: 600 }}>
                                         {room.roomName}
                                     </Typography>
-                                    <p style={{ fontSize: '10px', color: room.is_active_status ? 'red' : 'gray', padding: '13px' }}>
+                                    <p style={{ fontSize: '10px', color: room.is_active_status ? 'red' : 'green', padding: '13px' }}>
                                         <CircleIcon sx={{ fontSize: '10px', verticalAlign: 'middle', marginRight: '5px' }} />
                                         {room.is_active_status ? 'Unavailable now' : 'Available now'}
                                     </p>
@@ -231,14 +154,13 @@ const Home = () => {
                             </Box>
                         </Box>
                     ))}
-                </Box> */}
-
-
-
-
+                </Box>
             </Box>
-        </Box >
-    );
-};
+        </Box>
+
+
+    )
+
+}
 
 export default Home;

@@ -8,9 +8,9 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import IconButton from '@mui/material/IconButton';
 
 //images
-import LogoQ from '../../../public/Logo.png'
-import GoogleJpg from '../../img/Google.jpg'
-import Facebook from '../../img/facebook.jpg'
+import LogoQ from '../../assets/img/Logo.png'
+import GoogleJpg from '../../assets/img/Google.jpg'
+import Facebook from '../../assets/img/facebook.jpg'
 
 //Controllers
 import useMainController from './controllers';

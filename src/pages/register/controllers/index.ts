@@ -58,7 +58,7 @@ const useMainController = () => {
                 return;
             }
 
-            const response = await axios.post('https://1399-2400-c180-21-ddb7-dbb-1e2a-1577-30e.ngrok-free.app/api/contact/register', {
+            const response = await axios.post('https://779b-2400-c180-20-dff1-897c-d135-898c-c784.ngrok-free.app/api/contact/register', {
                 contact,
                 password,
                 confirmPassword

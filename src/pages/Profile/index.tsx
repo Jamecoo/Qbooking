@@ -48,8 +48,6 @@ const Profile = () => {
         </Link>,
     ];
 
-    
-
     return <Box sx={{ height: '932px',display: 'flex', minHeight: '100vh', justifyContent: 'center' }}>
         <Box sx={{ width: '100%', backgroundColor: 'white' }}>
             <Box sx={{ height: '237px', backgroundColor: '#282828', borderRadius: '0 0 30px 30px' }}>

@@ -2,11 +2,7 @@ import { Typography, TextField, Button, Box } from '@mui/material';
 
 //images
 
-import Logo from '../../../public/Logo.png'
-
-
-
-
+import Logo from '../../assets/img/Logo.png'
 
 export default function Forgot() {
 
